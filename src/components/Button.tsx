@@ -1,34 +1,33 @@
-import type { ReactElement } from "react";
+import { ReactElement } from "react";
 
-type Variants = "primary" | "secondary"
-interface ButtonProps {
-    variant: Variants
-    size: "sm" | "md" | "lg";
-    text: string;
+interface ButtonInterface {
+    tittle: string;
+    size: "lg" | "sm" | "md";
     startIcon?: ReactElement;
     endIcon?: ReactElement;
-    onClick: () => void;
+    variant: "primary" | "secondary";
 }
-
-const variantStyles  = {
-    "primary": "bg-purple-600 text-white",
-    "secondary": "bg-purple-300 text-purple-600"
-}
-
 
 const sizeStyles = {
-    "sm": "py-1 px-2",
-    "md": "py-2 px-4",
-    "lg": "py-4 px-6"
+    "lg": "px-8 py-4 text-xl rounded-xl",
+    "md": "px-4 py-2 text-md rounded-md",
+    "sm": "px-2 py-1 text-sm rounded-sm",
 }
 
-const defaultStyles = "rounded-md flex"
+const variantStyles = {
+    "primary": "bg-purple-600 text-white",
+    "secondary": "bg-purple-400 text-purple-600",
+}
 
+export function Button(props: ButtonInterface) {
 
-export const Button =(props: ButtonProps) => {
-    return <button className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
-        {props.startIcon ? <div className="pr-2">{props.startIcon}</div> : null} {props.text} {props.endIcon}
+    return <button className={sizeStyles[props.size] + " " +variantStyles[props.variant]}>
+        <div className="flex">
+            {props.startIcon}
+            <div className="pl-2 pr-2">
+                {props.tittle}
+            </div>
+            {props.endIcon}
+        </div>
     </button>
 }
-
-<Button variant="primary" size="md" onClick={() => {}} text={"asd"} />
