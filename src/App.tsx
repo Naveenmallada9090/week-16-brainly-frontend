@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
+import { Button }from './components/Button'
+import { PlusIcon } from './icons/PlusIcon'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      
+      <Button startIcon={<PlusIcon size="sm" />} size="sm" variant="primary" text="Share" onClick={() => {}} />
+      <Button size="md" variant="secondary" text="Add Content" onClick={() => {}} />
+      <Button size="lg" variant="secondary" text="Add Content" onClick={() => {}} />
     </>
   )
 }
